@@ -1,0 +1,6 @@
+== spiral_hannah
+
+Hannah's spiral matrix demo
+
+to run:
+bin/spiral_hannah.rb {number}
