@@ -72,16 +72,20 @@ describe Spiral do
       ["16 15 14 13", "5  4  3  12", "6  1  2  11","7  8  9  10"]
     end
     
-    before :each do
+    it "it should print out matrix with evenly spaced columns if given a perfect square" do
       output.each do |line|
-        STDOUT.should_receive(:print).with(line)
+        STDOUT.should_receive(:puts).with(line)
       end
-    end
-    
-    it "should print out matrix with evenly spaced columns" do
       spiral.generate(16)
       spiral.print
     end
+    
+    it "it should print an error message if not given a perfect square" do
+      STDOUT.should_receive(:puts).with("Please give a number that is a perfect square")
+      spiral.generate(7)
+      spiral.print
+    end
+    
   end
       
 end

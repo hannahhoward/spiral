@@ -54,10 +54,25 @@ class Spiral
   end
   
   def generate(number)
+    @number = number
     if perfect_square?(number)
       @matrix = generate_spiral_incrementally(number)
     else
       @matrix = nil
+    end
+  end
+  
+  def print
+    if !@matrix
+      $stdout.puts("Please give a number that is a perfect square")
+    else
+      digits = @number.to_s.length
+      @matrix.each do |row|
+        line = row.map do |element|
+          element.to_s + Array.new(digits-element.to_s.length, " ").join("")
+        end.join(" ")
+        $stdout.puts(line)
+      end
     end
   end
   
