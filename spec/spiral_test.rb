@@ -67,4 +67,21 @@ describe Spiral do
     
   end
   
+  describe 'print' do
+    let :output do
+      ["16 15 14 13", "5  4  3  12", "6  1  2  11","7  8  9  10"]
+    end
+    
+    before :each do
+      output.each do |line|
+        STDOUT.should_receive(:print).with(line)
+      end
+    end
+    
+    it "should print out matrix with evenly spaced columns" do
+      spiral.generate(16)
+      spiral.print
+    end
+  end
+      
 end
