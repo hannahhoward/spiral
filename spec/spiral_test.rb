@@ -29,4 +29,28 @@ describe Spiral do
     
   end
   
+  describe 'generate_spiral_matrix' do
+    let :test_matrices do
+      {
+        1   => [[1]],
+        4   => [[4,3],[1,2]],
+        9   => [[5,4,3],[6,1,2],[7,8,9]],
+        16  => [[16,15,14,13],[5,4,3,12],[6,1,2,11],[7,8,9,10]],
+        36  => [[36,35,34,33,32,31],
+                [17,16,15,14,13,30],
+                [18,5,4,3,12,29],
+                [19,6,1,2,11,28],
+                [20,7,8,9,10,27],
+                [21,22,23,24,25,26]]
+      }
+    end
+    
+    it "should generate a matrix with elements 1..n in spiral order" do
+      test_matrices.each do |n, matrix|
+        spiral.generate_spiral_matrix(n).should eq(matrix)
+      end
+    end
+    
+  end
+  
 end
