@@ -29,7 +29,7 @@ describe Spiral do
     
   end
   
-  describe 'generate_spiral_matrix' do
+  describe 'generate_spiral_incrementally' do
     let :test_matrices do
       {
         1   => [[1]],
@@ -47,8 +47,22 @@ describe Spiral do
     
     it "should generate a matrix with elements 1..n in spiral order" do
       test_matrices.each do |n, matrix|
-        spiral.generate_spiral_matrix(n).should eq(matrix)
+        spiral.generate_spiral_incrementally(n).should eq(matrix)
       end
+    end
+    
+  end
+  
+  describe 'generate' do
+    
+    it "should instantiate a matrix if given a perfect square" do
+      spiral.generate(9)
+      spiral.matrix.should_not be_nil
+    end
+    
+    it "should not instantiate a matrix if given a number that is not a perfect square" do
+      spiral.generate(5)
+      spiral.matrix.should be_nil
     end
     
   end

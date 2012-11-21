@@ -5,13 +5,13 @@ class Spiral
     return (sqrt == sqrt.floor)
   end
   
-  def generate_spiral_matrix(number)
+  def generate_spiral_incrementally(number)
     matrix_size = Math.sqrt(number).floor
     if matrix_size == 1
       [[1]]
     else
       one_size_smaller = (matrix_size-1)*(matrix_size-1)
-      matrix = generate_spiral_matrix(one_size_smaller)
+      matrix = generate_spiral_incrementally(one_size_smaller)
       current_number = one_size_smaller + 1
       if matrix_size.even?
       
@@ -47,6 +47,18 @@ class Spiral
       matrix
     end
     
+  end
+  
+  def matrix
+    @matrix
+  end
+  
+  def generate(number)
+    if perfect_square?(number)
+      @matrix = generate_spiral_incrementally(number)
+    else
+      @matrix = nil
+    end
   end
   
 end
